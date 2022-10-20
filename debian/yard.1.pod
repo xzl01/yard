@@ -1,0 +1,89 @@
+=encoding UTF-8
+
+=head1 NAME
+
+yard - documentation tool for Ruby 
+
+=head1 SYNOPSIS 
+
+B<yard> I<command> [I<options>]
+
+=head1 DESCRIPTION
+
+B<yard> is an extensible documentation generation tool for the Ruby programming
+language. It enables the user to generate consistent, usable documentation that
+can be exported to a number of formats very easily, and also supports extending
+for custom Ruby constructs such as custom class level definitions.
+
+Below are listed the commands that can be passed to the B<yard> on the command
+line. For more details about a I<command>, use B<yard> B<help> I<command> from
+the command line.
+
+=head1 COMMANDS
+
+=over
+
+=item B<config>
+
+Views or edits current global configuration
+
+=item B<diff>
+
+Returns the object diff of two gems or .yardoc files
+
+=item B<display>
+
+Displays a formatted object
+
+=item B<doc>
+
+Generates documentation. B<yardoc>(1) is a synonym of B<yard> B<doc>.
+
+=item B<gems>
+
+Builds YARD index for gems
+
+=item B<graph>
+
+Graphs class diagram using Graphviz
+
+=item B<help>
+
+Retrieves help for a command
+
+=item B<i18n>
+
+Generates .pot file from source code and extra documentation
+
+=item B<list>
+
+Lists all constant and methods. Uses B<yard> B<doc> B<--list>.
+
+=item B<markups>
+
+Lists all available markup types and libraries
+
+=item B<ri>
+
+A tool to view documentation in the console like B<ri>(1). B<yri>(1) is a synonym of B<yard> B<ri>.
+
+=item B<server>
+
+Runs a local documentation server
+
+=item B<stats>
+
+Prints documentation statistics on a set of files
+
+=back
+
+=head1 SEE ALSO
+
+B<yardoc>(1), B<yri>(1).
+
+=head1 AUTHORS
+
+B<yard> has been developed by Loren Segal <lsegal@soen.ca>.
+
+This manual page has been written for the Debian Project by Cédric Boutillier (but
+may used by others).

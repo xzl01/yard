@@ -1,0 +1,62 @@
+Source: yard
+Section: ruby
+Priority: optional
+Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>
+Uploaders: Lucas Nussbaum <lucas@debian.org>,
+           Cédric Boutillier <boutil@debian.org>,
+           Paul van Tilburg <paulvt@debian.org>
+Build-Depends: bundler,
+               debhelper-compat (= 12),
+               gem2deb (>= 1.6~),
+               libjs-jquery,
+               rake,
+               ruby-asciidoctor,
+               ruby-gettext (>= 2.2.1~),
+               ruby-rack,
+               ruby-redcarpet,
+               ruby-redcloth,
+               ruby-rspec,
+               ruby-webrick (>= 1.7~)
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/ruby-team/yard.git
+Vcs-Browser: https://salsa.debian.org/ruby-team/yard
+Homepage: https://yardoc.org
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: yard
+Architecture: all
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: libjs-jquery,
+         ${misc:Depends},
+         ${ruby:Depends},
+         ${shlibs:Depends},
+         ruby-webrick (>= 1.7~)
+Recommends: graphviz,
+            ruby-redcarpet
+Suggests: bundler,
+          ruby-asciidoctor,
+          ruby-rack,
+          ruby-redcloth,
+          yard-doc
+Description: Ruby documentation tool
+ YARD is a documentation generation tool for the Ruby programming language.
+ It enables the user to generate consistent, usable documentation that can be
+ exported to a number of formats very easily, and also supports extending for
+ custom Ruby constructs such as custom class level definitions.
+
+Package: yard-doc
+Architecture: all
+Section: doc
+Depends: libjs-jquery,
+         ${misc:Depends}
+Suggests: doc-base
+Multi-Arch: foreign
+Description: Ruby documentation tool - documentation
+ YARD is a documentation generation tool for the Ruby programming language.
+ It enables the user to generate consistent, usable documentation that can be
+ exported to a number of formats very easily, and also supports extending for
+ custom Ruby constructs such as custom class level definitions.
+ .
+ This package contains the documentation for YARD.

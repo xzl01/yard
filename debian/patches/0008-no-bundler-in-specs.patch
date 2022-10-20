@@ -1,0 +1,25 @@
+From: =?utf-8?q?C=C3=A9dric_Boutillier?= <boutil@debian.org>
+Date: Wed, 26 Feb 2020 00:29:12 +0100
+Subject: no bundler in specs
+
+---
+ spec/spec_helper.rb | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index 4d28de8..bc507b7 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -6,12 +6,6 @@ rescue LoadError
+   require "spec"
+ end
+ 
+-begin
+-  require 'bundler/setup'
+-rescue LoadError
+-  nil # noop
+-end
+-
+ require 'yard'
+ 
+ unless defined?(HAVE_RIPPER)

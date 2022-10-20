@@ -1,0 +1,9 @@
+0001-remove-timestamps-where-possible-for-reproducible-bu.patch
+0002-Prevent-possible-privacy-breach-with-distant-images.patch
+0003-spec-avoid-writing-to-file-shipped-with-upstream-sou.patch
+0004-spec-add-missing-require-spec_helper.patch
+0005-spec_helper-avoid-relative-require.patch
+0006-no-samus-in-Rakefile.patch
+0007-remove-git-usage-in-gemspec.patch
+0008-no-bundler-in-specs.patch
+0009-skip-some-config-specs-with-ruby2.7.patch

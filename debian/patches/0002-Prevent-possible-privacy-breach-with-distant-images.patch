@@ -1,0 +1,30 @@
+From: =?utf-8?q?C=C3=A9dric_Boutillier?= <boutil@debian.org>
+Date: Tue, 10 Jan 2017 18:06:19 -0200
+Subject: Prevent possible privacy breach with distant images
+
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2016-07-09
+---
+ README.md | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/README.md b/README.md
+index f7d3d08..8132bd4 100644
+--- a/README.md
++++ b/README.md
+@@ -1,14 +1,5 @@
+ # YARD: Yay! A Ruby Documentation Tool
+ 
+-[![Homepage](https://img.shields.io/badge/home-yardoc.org-blue.svg)](http://yardoc.org)
+-[![GitHub](https://img.shields.io/badge/github-lsegal/yard-blue.svg)](http://github.com/lsegal/yard)
+-[![Documentation](https://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://rubydoc.org/gems/yard/frames)
+-
+-[![Gem Version](https://badge.fury.io/rb/yard.svg)](http://github.com/lsegal/yard/releases)
+-[![Build Status](https://travis-ci.org/lsegal/yard.svg?branch=main)](https://travis-ci.org/lsegal/yard)
+-[![Coverage Status](https://coveralls.io/repos/github/lsegal/yard/badge.svg)](https://coveralls.io/github/lsegal/yard)
+-[![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg)](#license)
+-
+ ## Synopsis
+ 
+ YARD is a documentation generation tool for the Ruby programming language. It

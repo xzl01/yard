@@ -1,0 +1,20 @@
+From: Antonio Terceiro <terceiro@debian.org>
+Date: Tue, 10 Jan 2017 18:19:09 -0200
+Subject: spec: add missing `require 'spec_helper'`
+
+---
+ spec/cli/command_parser_spec.rb | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/spec/cli/command_parser_spec.rb b/spec/cli/command_parser_spec.rb
+index c3ad54b..58c2b76 100644
+--- a/spec/cli/command_parser_spec.rb
++++ b/spec/cli/command_parser_spec.rb
+@@ -1,5 +1,7 @@
+ # frozen_string_literal: true
+ 
++require 'spec_helper'
++
+ RSpec.describe YARD::CLI::CommandParser do
+   describe "#run" do
+     before do

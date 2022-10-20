@@ -1,0 +1,22 @@
+From: Antonio Terceiro <terceiro@debian.org>
+Date: Thu, 12 Jan 2017 21:54:47 -0200
+Subject: spec_helper: avoid relative require
+
+Just trust that $LOAD_PATH is correctly set.
+---
+ spec/spec_helper.rb | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
+index d0fdffc..4d28de8 100644
+--- a/spec/spec_helper.rb
++++ b/spec/spec_helper.rb
+@@ -12,7 +12,7 @@ rescue LoadError
+   nil # noop
+ end
+ 
+-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'yard'))
++require 'yard'
+ 
+ unless defined?(HAVE_RIPPER)
+   begin require 'ripper'; rescue LoadError; nil end

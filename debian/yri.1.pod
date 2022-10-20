@@ -1,0 +1,101 @@
+=encoding UTF-8
+
+=head1 NAME
+
+yri - documentation tool in console for Ruby 
+
+=head1 SYNOPSIS 
+
+B<yri> [I<options>] I<Path_to_object>
+
+=head1 DESCRIPTION
+
+B<yard>(1) is an extensible documentation generation tool for the Ruby programming
+language. It enables the user to generate consistent, usable documentation that
+can be exported to a number of formats very easily, and also supports extending
+for custom Ruby constructs such as custom class level definitions.
+
+B<yri>(1), synonym for B<yard> B<ri> gives the possibility to read the
+documentation for Ruby programs inside a console, pretty much like B<ri>(1).
+
+=head1 OPTIONS
+
+=head2 General Options:
+
+=over
+
+=item B<-b>, B<--db> I<FILE>
+
+Use a specified .yardoc db to search in
+
+=item B<-T>, B<--no-pager>
+
+No pager
+
+=item B<-p>, B<--pager> I<PAGER>
+
+Use I<PAGER> as a pager
+
+=back
+
+=head2 Other options:
+
+=over
+
+=item B<-e>, B<--load> I<FILE>
+
+A Ruby script to load before running command.
+
+=item B<--plugin> I<PLUGIN>
+
+Load a YARD plugin (gem with `yard-' prefix)
+
+=item B<--legacy>
+
+Use old style Ruby parser and handlers. Always on in 1.8.x.
+
+=item B<--safe>
+
+Enable safe mode for this instance
+
+=item B<-q>, B<--quiet>
+
+Show no warnings.
+
+=item B<--verbose>
+
+Show more information.
+
+=item B<--debug>
+
+Show debugging information.
+
+=item B<--backtrace>
+
+Show stack traces
+
+=item B<-v>, B<--version>
+
+Show version.
+
+=item B<-h>, B<--help>
+
+Show a help message, similar to this page.
+
+=back
+
+=head1 EXAMPLES
+
+B<yri> I<String#gsub>
+
+
+=head1 SEE ALSO
+
+B<yard>(1).
+
+=head1 AUTHORS
+
+B<yard> has been developed by Loren Segal <lsegal@soen.ca>.
+
+This manual page has been written for the Debian Project by Cédric Boutillier (but
+may used by others).

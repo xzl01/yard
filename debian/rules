@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+
+export GEM2DEB_TEST_RUNNER = --check-dependencies
+export DH_RUBY = --gem-install
+export DH_RUBY_GEM_INSTALL_EXCLUDELIST_APPEND = lib/yard/rubygems/backports/LICENSE.txt
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+execute_before_dh_installman:
+	mkdir man
+	pod2man --center "" --release "$(DEB_VERSION_UPSTREAM)" --name YARD --utf8 debian/yard.1.pod man/yard.1
+	pod2man --center "" --release "$(DEB_VERSION_UPSTREAM)" --name YARDOC --utf8 debian/yardoc.1.pod man/yardoc.1
+	pod2man --center "" --release "$(DEB_VERSION_UPSTREAM)" --name YRI --utf8 debian/yri.1.pod man/yri.1
+
+execute_after_dh_auto_install:
+	dh_link -p yard /usr/share/javascript/jquery/jquery.js \
+		/usr/share/rubygems-integration/all/gems/yard-$(DEB_VERSION_UPSTREAM)/templates/default/fulldoc/html/js/jquery.js
+	rm -rf doc/
+	rake yard
+
+execute_after_dh_clean:
+	rm -rf .yardoc
+	rm -rf man/
+	rm -rf doc/
+	rm -rf debian/examples.txt

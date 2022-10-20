@@ -1,0 +1,10 @@
+Document: yard-doc
+Title: Documentation of the YARD Ruby documentation tool
+Author: Loren Segal
+Abstract: This documentation is generated with YARD from
+ its own source code.
+Section: Programming/Ruby
+
+Format: HTML
+Index: /usr/share/doc/yard/doc/index.html
+Files: /usr/share/doc/yard/doc/*

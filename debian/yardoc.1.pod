@@ -1,0 +1,297 @@
+=encoding UTF-8
+
+
+=head1 NAME
+
+yardoc - Ruby tool to generate documentation for the Ruby programming language
+
+=head1 SYNOPSIS
+
+B<yarddoc> [I<options>] [I<source_files> [- I<extra_files>]]
+B<yard doc> [I<options>] [I<source_files> [- I<extra_files>]]
+
+=head1 DESCRIPTION
+
+
+B<yard>(1) is an extensible documentation generation tool for the Ruby programming
+language. It enables the user to generate consistent, usable documentation that
+can be exported to a number of formats very easily, and also supports extending
+for custom Ruby constructs such as custom class level definitions.
+
+B<yardoc>, synonym for B<yard> B<doc> generates the documentation from the
+list of I<source_files>. If this list is omitted, 
+C<{lib,app}/**/*.rb ext/**/*.c> is used.
+
+A base set of options can be specified by adding a B<.yardopts>
+file to your base path containing all extra options separated
+by whitespace.
+
+
+=head1 OPTIONS
+
+=head2 General Options
+
+=over
+
+=item B<-b>, B<--db> I<FILE>
+
+Use a specified .yardoc db to load from or save to (defaults to .yardoc)
+
+=item B<-->[B<no->]B<single-db>
+
+Whether code objects should be stored to single database file (advanced)
+
+=item B<-n>, B<--no-output>
+
+Only generate .yardoc database, no documentation.
+
+=item B<-c>, B<--use-cache> [I<FILE>]
+
+Use the cached .yardoc db to generate documentation (defaults to no cache)
+
+=item B<--no-cache>
+
+Clear .yardoc db before parsing source.
+
+=item B<-->[B<no->]B<yardopts> [I<FILE>]
+
+If arguments should be read from FILE (defaults to yes, FILE defaults to .yardopts)
+
+=item B<-->[B<no->]B<document>
+
+If arguments should be read from .document file (defaults to yes)
+
+=item B<--no-save>
+
+Do not save the parsed data to the yardoc db
+
+=item B<--exclude> I<REGEXP>
+
+Ignores a file if it matches path match (regexp)
+
+=back
+
+
+=head2 Output options
+
+=over
+
+=item B<--one-file>
+
+Generates output as a single file
+
+=item B<--list>
+
+List objects to standard out (implies B<-n>)
+
+=item B<--no-public>
+
+Don't show public methods. (default shows public)
+
+=item B<--protected>
+
+Show protected methods. (default hides protected)
+
+=item B<--private>
+
+Show private methods. (default hides private)
+
+=item B<--no-private>
+
+Hide objects with @private tag
+
+=item B<--[no-]api API>
+
+Generates documentation for a given API (objects which define the correct @api tag).
+If B<--no-api> is given, displays objects with no @api tag.
+
+=item B<--embed-mixins>
+
+Embeds mixin methods into class documentation
+
+=item B<--embed-mixin [MODULE]>
+
+Embeds mixin methods from a particular module into class documentation
+
+=item B<--no-highlight>
+
+Don't highlight code blocks in output.
+
+=item B<--default-return TYPE>
+
+Shown if method has no return type.  (defaults to 'Object')
+
+=item B<--hide-void-return>
+
+Hides return types specified as 'void'.  (default is shown)
+
+=item B<--query QUERY>
+
+Only show objects that match a specific query
+
+=item B<--title TITLE>
+
+Add a specific title to HTML documents
+
+=item B<-r>, B<--readme>, B<--main> I<FILE>
+
+The readme file used as the title page of documentation.
+
+=item B<--files> I<FILE1>,I<FILE2>,...
+
+Any extra comma separated static files to be included (eg. FAQ)
+
+=item B<--asset> I<FROM>[:I<TO>]
+
+A file or directory to copy over to output directory after generating
+
+=item B<-o>, B<--output-dir> I<PATH>
+
+The output directory. (defaults to ./doc)
+
+=item B<-m>, B<--markup> B<MARKUP>
+
+Markup style used in documentation, like textile, markdown or rdoc (defaults to rdoc).
+
+=item B<-M> I<MARKUP_PROVIDER>
+
+Overrides the library used to process markup
+
+=item B<--markup-provider>
+
+formatting (specify the gem name)
+
+=item B<--charset> I<ENC>
+
+Character set to use when parsing files (default is system locale)
+
+=item B<-t>, B<--template> I<TEMPLATE>
+
+The template to use. (defaults to "default")
+
+=item B<-p>, B<--template-path> I<PATH>
+
+The template path to look for templates in.  (used with -t).
+
+=item B<-f>, B<--format> I<FORMAT>
+
+The output format for the template (defaults to html).
+
+=item B<--no-stats>
+
+Don't print statistics
+
+=item B<--locale> I<LOCALE>
+
+The locale for generated documentation (defaults to en).
+
+=item B<--po-dir> I<DIR>
+
+The directory that has .po files (defaults to #{YARD::Registry.po_dir}).
+
+=back
+
+=head2 Tag options:
+
+(I<TAG>:I<TITLE> looks like: 'B<overload>:B<Overloaded Method>')
+
+=over
+
+=item B<--tag> I<TAG>:I<TITLE>
+
+Registers a new free-form metadata @tag
+
+=item B<--type-tag> I<TAG>:I<TITLE>
+
+Tag with an optional types field
+
+=item B<--type-name-tag> I<TAG>:I<TITLE>
+
+Tag with optional types and a name field
+
+=item B<--name-tag> I<TAG>:I<TITLE>
+
+Tag with a name field
+
+=item B<--title-tag> I<TAG>:I<TITLE>
+
+Tag with first line as title field
+
+=item B<--hide-tag> I<TAG>
+
+Hides a previously defined tag from templates
+
+=item B<--transitive-tag> I<TAG>
+
+Marks a tag as transitive
+
+=item B<--non-transitive-tag> I<TAG>
+
+Marks a tag as not transitive
+
+=back
+
+=head2 Other options:
+
+=over
+
+=item B<-e>, B<--load> I<FILE>
+
+A Ruby script to load before running command.
+
+=item B<--plugin> I<PLUGIN>
+
+Load a YARD plugin (gem with `yard-' prefix)
+
+=item B<--legacy>
+
+Use old style Ruby parser and handlers. Always on in 1.8.x.
+
+=item B<--safe>
+
+Enable safe mode for this instance
+
+=item B<-q>, B<--quiet>
+
+Show no warnings.
+
+=item B<--verbose>
+
+Show more information.
+
+=item B<--debug>
+
+Show debugging information.
+
+=item B<--backtrace>
+
+Show stack traces
+
+=item B<-v>, B<--version>
+
+Show version.
+
+=item B<-h>, B<--help>
+
+Show this help.
+
+=back
+
+=head1 EXAMPLES
+
+B<yardoc> B<-o> C<documentation/> - C<FAQ> C<LICENSE>
+
+The above example outputs documentation for files in
+C<lib/**/*.rb> to C<documentation/> including the extra files
+C<FAQ> and C<LICENSE>.
+
+=head1 SEE ALSO
+
+B<yard>(1).
+
+=head1 AUTHORS
+
+B<yard> has been developed by Loren Segal <lsegal@soen.ca>.
+
+This manual page has been written for the Debian Project by Cédric Boutillier (but
+may used by others).

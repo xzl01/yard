@@ -1,0 +1,22 @@
+From: =?utf-8?q?C=C3=A9dric_Boutillier?= <boutil@debian.org>
+Date: Tue, 25 Feb 2020 23:35:13 +0100
+Subject: remove git usage in gemspec
+
+---
+ yard.gemspec | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/yard.gemspec b/yard.gemspec
+index f57a83b..94ac8e6 100644
+--- a/yard.gemspec
++++ b/yard.gemspec
+@@ -15,7 +15,8 @@ Gem::Specification.new do |s|
+   s.email         = "lsegal@soen.ca"
+   s.homepage      = "http://yardoc.org"
+   s.platform      = Gem::Platform::RUBY
+-  s.files         = `git ls-files`.strip.split(/\s+/).reject {|f| f.match(%r{^spec/}) }
++  s.files         = Dir.glob("{docs,bin,lib,spec,templates,benchmarks}/**/*") +
++                    ['CHANGELOG.md', 'LICENSE', 'LEGAL', 'README.md', 'Rakefile', '.yardopts', __FILE__]
+   s.require_paths = ['lib']
+   s.executables   = ['yard', 'yardoc', 'yri']
+   s.license = 'MIT' if s.respond_to?(:license=)
