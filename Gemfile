@@ -2,13 +2,13 @@
 source 'https://rubygems.org'
 
 group :development do
-  gem 'rspec'
+  gem 'rspec', '>= 3.11.0'
   gem 'rake'
-  gem 'rdoc'
+  gem 'rdoc', '= 6.1.2.1'
   gem 'json'
   gem 'simplecov'
   gem 'samus', '~> 3.0.9', :require => false
-  gem 'coveralls', :require => false
+  gem 'coveralls_reborn', :require => false
   gem 'webrick'
 end
 
@@ -18,6 +18,7 @@ end
 
 group :markdown do
   gem 'redcarpet'
+  gem 'commonmarker'
 end
 
 group :textile do
@@ -25,7 +26,7 @@ group :textile do
 end
 
 group :server do
-  gem 'rack'
+  gem 'rack', '~> 2.0'
 end
 
 group :i18n do

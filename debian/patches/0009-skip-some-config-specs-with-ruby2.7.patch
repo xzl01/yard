@@ -9,11 +9,11 @@ waiting for more investigation with rspec, bundler and ruby2.7
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/spec/config_spec.rb b/spec/config_spec.rb
-index 8d2def2..a8b9a56 100644
+index b592ce4..8f16120 100644
 --- a/spec/config_spec.rb
 +++ b/spec/config_spec.rb
-@@ -20,7 +20,7 @@ RSpec.describe YARD::Config do
-       expect(YAML).to receive(:load_file).with(YARD::Config::CONFIG_FILE).and_return('test' => true)
+@@ -26,7 +26,7 @@ RSpec.describe YARD::Config do
+       end
        YARD::Config.load
        expect(YARD::Config.options[:test]).to be true
 -    end
@@ -21,7 +21,7 @@ index 8d2def2..a8b9a56 100644
  
      it "ignores any plugins specified in '~/.yard/ignored_plugins'" do
        expect(File).to receive(:file?).with(YARD::Config::CONFIG_FILE).and_return(false)
-@@ -151,7 +151,7 @@ RSpec.describe YARD::Config do
+@@ -157,7 +157,7 @@ RSpec.describe YARD::Config do
        expect(YARD::Config).to receive(:load_plugin).with('yard_plugin').and_return(false)
        expect(YARD::Config).to receive(:load_plugin).with('yard-plugin').and_return(true)
        expect(YARD::Config.load_plugins).to be true

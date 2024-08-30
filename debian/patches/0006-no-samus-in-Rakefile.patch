@@ -6,39 +6,19 @@ Origin: vendor
 Forwarded: not-needed
 Last-Update: 2020-01-02
 ---
- Gemfile  | 2 +-
- Rakefile | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ Gemfile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Gemfile b/Gemfile
-index 67f0639..a31f6b7 100644
---- a/Gemfile
-+++ b/Gemfile
+Index: yard/Gemfile
+===================================================================
+--- yard.orig/Gemfile
++++ yard/Gemfile
 @@ -7,7 +7,7 @@ group :development do
-   gem 'rdoc'
+   gem 'rdoc', '= 6.1.2.1'
    gem 'json'
    gem 'simplecov'
 -  gem 'samus', '~> 3.0.9', :require => false
 +  #gem 'samus', '~> 3.0.9', :require => false
-   gem 'coveralls', :require => false
+   gem 'coveralls_reborn', :require => false
    gem 'webrick'
  end
-diff --git a/Rakefile b/Rakefile
-index ae5847d..d6c1937 100644
---- a/Rakefile
-+++ b/Rakefile
-@@ -2,7 +2,7 @@
- require File.dirname(__FILE__) + '/lib/yard'
- require File.dirname(__FILE__) + '/lib/yard/rubygems/specification'
- require 'rbconfig'
--require 'samus'
-+#require 'samus'
- 
- YARD::VERSION.replace(ENV['YARD_VERSION']) if ENV['YARD_VERSION']
- 
-@@ -36,4 +36,4 @@ YARD::Rake::YardocTask.new do |t|
-   t.options += ['--title', "YARD #{YARD::VERSION} Documentation"]
- end
- 
--Samus::Rake::DockerReleaseTask.new
-+#Samus::Rake::DockerReleaseTask.new

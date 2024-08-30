@@ -26,22 +26,31 @@ class YARD::Handlers::Ruby::MixinHandler < YARD::Handlers::Ruby::Base
     raise YARD::Parser::UndocumentableError unless mixin.ref?
     raise YARD::Parser::UndocumentableError if mixin.first.type == :ident
 
-    case obj = Proxy.new(namespace, mixin.source)
-    when ConstantObject # If a constant is included, use its value as the real object
-      obj = Proxy.new(namespace, obj.value, :module)
+    if mixin.type == :var_ref && mixin[0] == s(:kw, "self")
+      obj = namespace
     else
-      obj = Proxy.new(namespace, mixin.source, :module)
+      case obj = Proxy.new(namespace, mixin.source)
+      when ConstantObject # If a constant is included, use its value as the real object
+        obj = Proxy.new(namespace, obj.value, :module)
+      else
+        obj = Proxy.new(namespace, mixin.source, :module)
+      end
     end
 
     rec = recipient(mixin)
-    return if rec.nil? || rec.mixins(scope).include?(obj)
+    return if rec.nil?
+
+    ensure_loaded!(rec)
+    return if rec.mixins(scope).include?(obj)
 
     shift = statement.method_name(true) == :include ? :unshift : :push
     rec.mixins(scope).send(shift, obj)
   end
 
   def recipient(mixin)
-    if statement[0].type == :var_ref && statement[0][0] != s(:kw, "self")
+    if statement[0].type == :const_path_ref || statement[0].type == :top_const_ref
+      Proxy.new(namespace, statement[0].source)
+    elsif statement[0].type == :var_ref && statement[0][0] != s(:kw, "self")
       statement[0][0].type == :const ?
         Proxy.new(namespace, statement.namespace.source) :
         nil

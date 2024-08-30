@@ -43,6 +43,8 @@ module YARD
 
         print_statistics
         print_undocumented_objects
+
+        abort if fail_on_warning && log.warned
       end
 
       # Prints statistics for different object types
@@ -223,7 +225,8 @@ module YARD
         end
 
         opts.on('--query QUERY', "Only includes objects that match a specific query") do |query|
-          options[:verifier].add_expressions(query.taint)
+          query.taint if query.respond_to?(:taint)
+          options[:verifier].add_expressions(query)
         end
       end
     end

@@ -62,6 +62,50 @@ RSpec.describe "YARD::Handlers::Ruby::#{LEGACY_PARSER ? "Legacy::" : ""}MethodHa
     expect(P('Bar#multiline_params').signature).to eq sig
   end if YARD.ruby2?
 
+  it "handles endless method definitions without parameters" do
+    YARD.parse_string <<-EOF
+      class Bar
+        def endless = true
+      end
+    EOF
+
+    expect(P('Bar#endless').signature).to eq "def endless"
+  end if YARD.ruby3?
+
+  it "handles method with arguments forwarding" do
+    YARD.parse_string <<-EOF
+      class Bar
+        def method_with_forwarding(...)
+          forward_to(...)
+        end
+      end
+    EOF
+
+    expect(P('Bar#method_with_forwarding').signature).to eq "def method_with_forwarding(...)"
+  end if YARD.ruby3? # this is 2.7+ but we can just test on 3+
+
+  it "handles method with anonymous block" do
+    YARD.parse_string <<-EOF
+      class Bar
+        def anon_block_method(&)
+          baz(a, &)
+        end
+      end
+    EOF
+
+    expect(P('Bar#anon_block_method').signature).to eq "def anon_block_method(&)"
+  end if YARD.ruby31?
+
+  it "handles endless method definitions with parameters" do
+    YARD.parse_string <<-EOF
+      class Bar
+        def endless_with_arg(arg = true) = true
+      end
+    EOF
+
+    expect(P('Bar#endless_with_arg').signature).to eq "def endless_with_arg(arg = true)"
+  end if YARD.ruby3?
+
   it "handles method signature with no parameters" do
     YARD.parse_string "class Bar; def foo; end end"
     expect(P('Bar#foo').signature).to eq 'def foo'

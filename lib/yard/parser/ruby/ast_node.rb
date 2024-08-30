@@ -426,6 +426,13 @@ module YARD
         def block_param
           self[-1] ? self[-1][0] : nil
         end
+
+        def args_forward
+          # shape is (required, optional, rest, more, keyword, keyword_rest, block)
+          # Ruby 3.1 moves :args_forward from rest to keyword_rest
+          args_index = YARD.ruby31? ? -2 : 2
+          self[args_index].type == :args_forward if self[args_index]
+        end
       end
 
       class MethodCallNode < AstNode
@@ -480,7 +487,7 @@ module YARD
         end
 
         def parameters(include_block_param = true)
-          params = self[1 + index_adjust]
+          return unless params = self[1 + index_adjust]
           params = params[0] if params.type == :paren
           include_block_param ? params : params[0...-1]
         end
@@ -488,7 +495,7 @@ module YARD
         def signature
           params_src = ''
           params = self[1 + index_adjust]
-          if params.first
+          if params and params.first
             params_src = params.type == :paren ? '' : ' '
             params_src += params.source.gsub(/\s+(\s|\))/m, '\1')
           end

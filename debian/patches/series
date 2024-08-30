@@ -4,6 +4,7 @@
 0004-spec-add-missing-require-spec_helper.patch
 0005-spec_helper-avoid-relative-require.patch
 0006-no-samus-in-Rakefile.patch
-0007-remove-git-usage-in-gemspec.patch
 0008-no-bundler-in-specs.patch
 0009-skip-some-config-specs-with-ruby2.7.patch
+0010-Disable-failing-test-searching-for-.gem-files.patch
+0011-locale_spec-skip-test-that-fails-on-ruby3.1-when-not.patch

@@ -6,33 +6,31 @@ Uploaders: Lucas Nussbaum <lucas@debian.org>,
            Cédric Boutillier <boutil@debian.org>,
            Paul van Tilburg <paulvt@debian.org>
 Build-Depends: bundler,
-               debhelper-compat (= 12),
+               debhelper-compat (= 13),
                gem2deb (>= 1.6~),
                libjs-jquery,
                rake,
                ruby-asciidoctor,
+               ruby-coveralls,
                ruby-gettext (>= 2.2.1~),
                ruby-rack,
                ruby-redcarpet,
                ruby-redcloth,
                ruby-rspec,
-               ruby-webrick (>= 1.7~)
-Standards-Version: 4.6.0
+               ruby-webrick (>= 1.7.0)
+Standards-Version: 4.6.2
 Vcs-Git: https://salsa.debian.org/ruby-team/yard.git
 Vcs-Browser: https://salsa.debian.org/ruby-team/yard
 Homepage: https://yardoc.org
 Testsuite: autopkgtest-pkg-ruby
-XS-Ruby-Versions: all
 Rules-Requires-Root: no
 
 Package: yard
 Architecture: all
-XB-Ruby-Versions: ${ruby:Versions}
 Depends: libjs-jquery,
          ${misc:Depends},
          ${ruby:Depends},
-         ${shlibs:Depends},
-         ruby-webrick (>= 1.7~)
+         ${shlibs:Depends}
 Recommends: graphviz,
             ruby-redcarpet
 Suggests: bundler,

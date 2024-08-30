@@ -1,9 +1,17 @@
 # frozen_string_literal: true
-require 'rack'
-require 'webrick/httputils'
 
 module YARD
   module Server
+    begin
+      require 'rackup'
+      # @private
+      RackServer = Rackup::Server
+    rescue LoadError
+      require 'rack'
+      # @private
+      RackServer = Rack::Server
+    end
+
     # This class wraps the {RackAdapter} into a Rack-compatible middleware.
     # See {#initialize} for a list of options to pass via Rack's +#use+ method.
     #
@@ -42,7 +50,7 @@ module YARD
 
     # A server adapter to respond to requests using the Rack server infrastructure.
     class RackAdapter < Adapter
-      include WEBrick::HTTPUtils
+      include YARD::Server::HTTPUtils
 
       # Responds to Rack requests and builds a response with the {Router}.
       # @return [Array(Numeric,Hash,Array)] the Rack-style response
@@ -56,11 +64,11 @@ module YARD
           [ex.message + "\n" + ex.backtrace.join("\n")]]
       end
 
-      # Starts the +Rack::Server+. This method will pass control to the server and
+      # Starts the Rack server. This method will pass control to the server and
       # block.
       # @return [void]
       def start
-        server = Rack::Server.new(server_options)
+        server = RackServer.new(server_options)
         server.instance_variable_set("@app", self)
         print_start_message(server)
         server.start

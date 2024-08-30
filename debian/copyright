@@ -3,7 +3,7 @@ Upstream-Name: yard
 Source: http://yardoc.org
 
 Files: *
-Copyright: 2007-2018 Loren Segal <lsegal@soen.ca>
+Copyright: 2007-2022 Loren Segal <lsegal@soen.ca>
 License: Expat
 
 Files: lib/yard/rubygems/backports/*
@@ -35,7 +35,7 @@ Comment: the file is a compressed Javascript library. It can be
 
 Files: debian/*
 Copyright: 2011 Lucas Nussbaum <lucas@debian.org>
-           2012-2013 Cédric Boutillier <boutil@debian.org>
+           2012-2022 Cédric Boutillier <boutil@debian.org>
 License: Expat
 
 Files: debian/missing-sources/jquery.js

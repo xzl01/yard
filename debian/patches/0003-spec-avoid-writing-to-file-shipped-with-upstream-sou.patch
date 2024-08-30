@@ -6,11 +6,11 @@ Subject: spec: avoid writing to file shipped with upstream source
  spec/spec_helper.rb | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
-index 9c521a1..d0fdffc 100644
---- a/spec/spec_helper.rb
-+++ b/spec/spec_helper.rb
-@@ -168,7 +168,7 @@ RSpec.configure do |config|
+Index: yard/spec/spec_helper.rb
+===================================================================
+--- yard.orig/spec/spec_helper.rb
++++ yard/spec/spec_helper.rb
+@@ -170,7 +170,7 @@ RSpec.configure do |config|
    # Allows RSpec to persist some state between runs in order to support
    # the `--only-failures` and `--next-failure` CLI options. We recommend
    # you configure your source control system to ignore this file.

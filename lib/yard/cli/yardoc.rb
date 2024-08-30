@@ -295,9 +295,10 @@ module YARD
         self.files = Parser::SourceParser::DEFAULT_PATH_GLOB if files.empty?
         files.delete_if {|x| x =~ /\A\s*\Z/ } # remove empty ones
         readme = Dir.glob('README{,*[^~]}').
+          select {|f| extra_file_valid?(f)}.
           sort_by {|r| [r.count('.'), r.index('.'), r] }.first
         readme ||= Dir.glob(files.first).first if options.onefile && !files.empty?
-        options.readme ||= CodeObjects::ExtraFileObject.new(readme) if readme
+        options.readme ||= CodeObjects::ExtraFileObject.new(readme) if readme && extra_file_valid?(readme)
         options.files.unshift(options.readme).uniq! if options.readme
 
         Tags::Library.visible_tags -= hidden_tags
@@ -333,7 +334,7 @@ module YARD
       private
 
       # Generates output for objects
-      # @param [Hash, nil] checksums if supplied, a list of checkums for files.
+      # @param [Hash, nil] checksums if supplied, a list of checksums for files.
       # @return [void]
       # @since 0.5.1
       def run_generate(checksums)
@@ -649,7 +650,8 @@ module YARD
 
         opts.on('--query QUERY', "Only show objects that match a specific query") do |query|
           next if YARD::Config.options[:safe_mode]
-          options.verifier.add_expressions(query.taint)
+          query.taint if query.respond_to?(:taint)
+          options.verifier.add_expressions(query)
         end
 
         opts.on('--title TITLE', 'Add a specific title to HTML documents') do |title|

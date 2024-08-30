@@ -10,7 +10,7 @@ Last-Update: 2016-07-09
  1 file changed, 9 deletions(-)
 
 diff --git a/README.md b/README.md
-index f7d3d08..8132bd4 100644
+index ec5ffc9..8132bd4 100644
 --- a/README.md
 +++ b/README.md
 @@ -1,14 +1,5 @@
@@ -21,7 +21,7 @@ index f7d3d08..8132bd4 100644
 -[![Documentation](https://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://rubydoc.org/gems/yard/frames)
 -
 -[![Gem Version](https://badge.fury.io/rb/yard.svg)](http://github.com/lsegal/yard/releases)
--[![Build Status](https://travis-ci.org/lsegal/yard.svg?branch=main)](https://travis-ci.org/lsegal/yard)
+-[![Unit Tests](https://github.com/lsegal/yard/actions/workflows/ci.yml/badge.svg)](https://github.com/lsegal/yard/actions/workflows/ci.yml)
 -[![Coverage Status](https://coveralls.io/repos/github/lsegal/yard/badge.svg)](https://coveralls.io/github/lsegal/yard)
 -[![License](https://img.shields.io/badge/license-MIT-yellowgreen.svg)](#license)
 -

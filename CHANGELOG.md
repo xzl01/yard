@@ -1,13 +1,95 @@
 # main
 
-# 0.9.26 - December 26th, 2020
+# [0.9.36] - February 29th, 2024
+
+[0.9.36]: https://github.com/lsegal/yard/compare/v0.9.35...v0.9.36
+
+- Further XSS fixes for generated frameset pages (#1538)
+- Improve tests for Ruby 3.3 compatibility (#1519, #1531)
+- Documentation improvements (#1524)
+
+# [0.9.35] - February 28th, 2024
+
+[0.9.35]: https://github.com/lsegal/yard/compare/v0.9.34...v0.9.35
+
+- Fix possible XSS on generated YARD frameset pages (thanks to @RedYetiDev for finding and patching) (2069e2b).
+- Fix errors when using `@option` on non-method objects (#1508)
+- Support Ruby 3.3 changes in Ripper parser (#1510)
+
+# [0.9.34] - April 12nd, 2023
+
+[0.9.34]: https://github.com/lsegal/yard/compare/v0.9.33...v0.9.34
+
+- Add changelog to yard.gemspec
+- Fix fork behavior in `yard server --fork`
+
+# [0.9.33] - April 11st, 2023
+
+[0.9.33]: https://github.com/lsegal/yard/compare/v0.9.32...v0.9.33
+
+- Ensure .yardopts is present in gem package (internal YARD documentation change)
+
+# 0.9.32 - April 9th, 2023
+
+[0.9.32]: https://github.com/lsegal/yard/compare/v0.9.31...v0.9.32
+
+- Fix issue with custom Rack::Request attributes in `yard server`
+
+# [0.9.31] - April 9th, 2023
+
+[0.9.31]: https://github.com/lsegal/yard/compare/v0.9.30...v0.9.31
+
+- Remove dependency on webrick in YARD::Server::Commands::StaticFileHelpers
+
+# [0.9.30] - April 9th, 2023
+
+[0.9.30]: https://github.com/lsegal/yard/compare/v0.9.29...v0.9.30
+
+- Hot release fix to correct issue with gem packaging missing templates (#1490)
+
+# [0.9.29] - April 8th, 2023
+
+[0.9.29]: https://github.com/lsegal/yard/compare/v0.9.28...v0.9.29
+
+- Enable table support for CommonMarker (#1443)
+- Parser performance improvements (#1452, #1453, #1454, #1455)
+- Fix autoload of RipperParser (#1460)
+- Remove dependency on webrick for better Ruby 3.1+ support
+- Improvements for mixin resolution (#1467, #1468)
+
+# [0.9.28] - June 1st, 2022
+
+[0.9.28]: https://github.com/lsegal/yard/compare/v0.9.27...v0.9.28
+
+- Safe load config YAML files (#1385)
+- Handle empty string constants (#1415)
+- Pre-emptively support removal of `Object#taint` in Ruby 3.2 (#1419)
+- Fix Ruby 3.1 forward args Ripper change (#1431)
+
+# [0.9.27] - November 29th, 2021
+
+[0.9.27]: https://github.com/lsegal/yard/compare/v0.9.26...v0.9.27
+
+- Add support for Ruby 3.0 endless method definitions. (#1376, #1381)
+- Add existence check for README file (#1367)
+- Support module_function decorator (#1365)
+- Add CommonMarker markup support (`-m commonmarker`) (#1157, #1388)
+- Fix nested array parsing (#1389)
+- Add WEBrick as a runtime dependency for Ruby 3.0 support (#1400)
+- Support `fail_on_warning` option in `yard stats` command (#1392)
+- Better integration with Sorbet (#1401)
+- Handle include mixins on complex paths (#1386)
+- Fix `@!scope` maintaining state in lone comment blocks (#1411)
+- Remove support for Travis CI
+
+# [0.9.26] - December 26th, 2020
 
 [0.9.26]: https://github.com/lsegal/yard/compare/v0.9.25...v0.9.26
 
 - Add support for Ruby 3.0 and fix tests
 - Fix support for `frozen_string_literal: false` magic comments (#1363)
 
-# 0.9.25 - May 3rd, 2020
+# [0.9.25] - May 3rd, 2020
 
 [0.9.25]: https://github.com/lsegal/yard/compare/v0.9.24...v0.9.25
 
@@ -22,7 +104,7 @@
 - Omit spec files in gem package (#1307)
 - README updates (#1322)
 
-# 0.9.24 - January 8th, 2020
+# [0.9.24] - January 8th, 2020
 
 [0.9.24]: https://github.com/lsegal/yard/compare/v0.9.23...v0.9.24
 
@@ -30,20 +112,20 @@
   cache is changed.
 - Fix issue where Registry fails to resolve first-time lookups on instance methods.
 
-# 0.9.23 - January 5th, 2020
+# [0.9.23] - January 5th, 2020
 
 [0.9.23]: https://github.com/lsegal/yard/compare/v0.9.22...v0.9.23
 
 - Fix issues with double encoded code blocks when highlighted from an extra
   file.
 
-# 0.9.22 - December 31st, 2019
+# [0.9.22] - December 31st, 2019
 
 [0.9.22]: https://github.com/lsegal/yard/compare/v0.9.21...v0.9.22
 
 - Revert jquery update in last release since it requires more changes. (#1298)
 
-# 0.9.21 - December 31st, 2019
+# [0.9.21] - December 31st, 2019
 
 [0.9.21]: https://github.com/lsegal/yard/compare/v0.9.20...v0.9.21
 
@@ -59,7 +141,7 @@
 - Update jquery to 3.4.1 (#1294)
 - Test fixes (#1244)
 
-# 0.9.20 - June 27th, 2019
+# [0.9.20] - June 27th, 2019
 
 [0.9.20]: https://github.com/lsegal/yard/compare/v0.9.19...v0.9.20
 
@@ -69,7 +151,7 @@
   `yard server` host under certain conditions. Thanks to CuongMX from
   Viettel Cyber Security for discovering this vulnerability.
 
-# 0.9.19 - April 2nd, 2019
+# [0.9.19] - April 2nd, 2019
 
 [0.9.19]: https://github.com/lsegal/yard/compare/v0.9.16...v0.9.19
 

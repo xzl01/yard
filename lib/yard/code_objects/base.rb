@@ -303,6 +303,7 @@ module YARD
       # definitions with docstrings first.
       #
       # @return [String] a filename
+      # @return [nil] if there is no file associated with the object
       def file
         @files.first ? @files.first[0] : nil
       end
@@ -434,7 +435,10 @@ module YARD
       #
       # @return [Symbol] the type of code object this represents
       def type
-        self.class.name.split('::').last.gsub(/Object$/, '').downcase.to_sym
+        obj_name = self.class.name.split('::').last
+        obj_name.gsub!(/Object$/, '')
+        obj_name.downcase!
+        obj_name.to_sym
       end
 
       # Represents the unique path of the object. The default implementation

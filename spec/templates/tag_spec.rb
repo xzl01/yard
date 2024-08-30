@@ -45,8 +45,20 @@ RSpec.describe YARD::Templates::Engine.template(:default, :tags) do
         module Foo; end
       eof
 
-      proc = lambda { Registry.at('Foo').format(html_options) }
-      expect(proc).not_to raise_error
+      expect { Registry.at('Foo').format(html_options) }
+        .not_to raise_error
+    end
+  end
+
+  describe "option tags on non-methods" do
+    it "does not display @option tags on non-method objects" do
+      YARD.parse_string <<-'eof'
+        # @option opts name [#to_s] ('bar') the name
+        module Foo; end
+      eof
+
+      expect { Registry.at('Foo').format(html_options) }
+        .not_to raise_error
     end
   end
 end
